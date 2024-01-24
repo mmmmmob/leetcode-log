@@ -1,4 +1,6 @@
-// Closure Function
+// https://leetcode.com/problems/counter
+
+// This problem using JS feature called "Closure Function"
 
 var createCounter = function (n) {
   return function () {
