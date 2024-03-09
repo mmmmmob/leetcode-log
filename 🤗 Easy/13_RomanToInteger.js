@@ -28,6 +28,9 @@ let romanToInt = function (s) {
       case "V":
         result += 5;
         break;
+      case "X":
+        result += 10;
+        break;
       case "L":
         result += 50;
         break;
@@ -54,8 +57,7 @@ let romanToInt = function (s) {
   if (s.includes("CD") || s.includes("CM")) {
     result -= 200;
   }
-
   return result;
 };
 
-console.log(romanToInt("MCMXCIV"));
+console.log(romanToInt("CIV"));
