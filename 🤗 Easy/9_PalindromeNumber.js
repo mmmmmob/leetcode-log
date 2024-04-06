@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/palindrome-number/
 let isPalindrome = function (x) {
-  if (x.toString().split("").reverse().join("") === x.toString()) {
-    return true;
-  } else return false;
+  return x.toString().split("").reverse().join("") === x.toString();
 };
 
-console.log(isPalindrome(100021));
+console.log(isPalindrome(10101));
