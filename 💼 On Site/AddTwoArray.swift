@@ -1,8 +1,6 @@
 /*
 • The function should add the values of the two [Int] arrays in such a way the the first element of the first array is added to the first element of the second array, the second element of the first array is added to the second element of the second array, and so on.
-
 • If the lengths of the arrays are different then the function should add the corresponding values and leave the others as they are.
-
 • Before performing the additions, all values in each array should be changed to their absolute values. 
 
 Examples:
