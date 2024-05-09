@@ -10,34 +10,33 @@
 */
 
 func isValid(_ s: String) -> Bool {
-    var result: Bool = false
-    var r: String = s
+    var result = [Bool]()
     
-    for char in s {
-        if char == "(" {
-            if let index = r.firstIndex(of: ")") {
-                r.remove(at: index)
-            }
-        }
-        else if char == "[" {
-            if let index = r.firstIndex(of: "]") {
-                r.remove(at: index)
-            }
-        }
-        else if char == "{" {
-            if let index = r.firstIndex(of: "}") {
-                r.remove(at: index)
-            }
+    let r = stride(from: 0, to: s.count - 1, by: 2).map { index in
+        let firstCharIndex = s.index(s.startIndex, offsetBy: index)
+        let secondCharIndex = s.index(after: firstCharIndex)
+        return (s[firstCharIndex], s[secondCharIndex])
+    }
+    
+    for pair in r {
+        if pair.0 == "(" && pair.1 == ")" {
+            result.append(true)
+        } else if pair.0 == "{" && pair.1 == "}" {
+            result.append(true)
+        } else if pair.0 == "[" && pair.1 == "]" {
+            result.append(true)
         }
     }
     
-    if r.count == s.count / 2 {
-        result = true
-    }
+    if result.count == r.count {
+        return true
+    } else { return false }
     
-    return result
 }
 
+
 print(isValid("()")) // true
+print(isValid("()[]{}")) // true
 print(isValid("([)]")) // false
 print(isValid("(]")) // false
+print(isValid("{[]}")) // true
