@@ -1,19 +1,36 @@
 import Foundation
 
+/*
 extension Date {
-  var day: Int
+  var day: Int 
   var nameOfDay: String
   var month: Int
-  var nameOfTheMoth: String
+  var nameOfTheMonth: String
   var year: Int
 
-  public static func numberOfDaysBetween(date1: Int, date2: Int) -> Int {
+  func numberOfDaysBetween(date1: Int, date2: Int) -> Int {
     
   }
 }
+*/
 
 extension String {
-  public static func toDate(date: String) -> Date {
-
-  }
+    func toDate() -> Date? {
+        let stringFormat = DateFormatter()
+        
+        if self.contains("/") {
+            stringFormat.dateFormat = "EEEE dd/MMMM/yyyy"
+        } else if self.contains(":") {
+            stringFormat.dateFormat = "dd MMM yyyy HH:mm:ss VV"
+            let timeZone = self.components(separatedBy: .whitespaces).last
+            stringFormat.timeZone = TimeZone(abbreviation: timeZone ?? "GMT")
+        }
+        
+        let result = stringFormat.date(from: self)
+        
+        return result
+    }
 }
+    
+print("Friday 04/September/2020".toDate())
+print("12 Dec 2021 22:13:44 CST".toDate())
