@@ -18,6 +18,8 @@ extension String {
     func toDate() -> Date? {
         let stringFormat = DateFormatter()
         
+        stringFormat.locale = Locale(identifier: "en_US_POSIX")
+        
         if self.contains("/") {
             stringFormat.dateFormat = "EEEE dd/MMMM/yyyy"
         } else if self.contains(":") {
@@ -25,6 +27,7 @@ extension String {
             let timeZone = self.components(separatedBy: .whitespaces).last
             stringFormat.timeZone = TimeZone(abbreviation: timeZone ?? "GMT")
         }
+
         
         let result = stringFormat.date(from: self)
         
